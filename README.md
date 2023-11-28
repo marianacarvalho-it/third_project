@@ -1,4 +1,4 @@
-# DM Airlines - MERN
+# DM Airlines - MERN project
 This MERN final project is about a programm 
 
 
