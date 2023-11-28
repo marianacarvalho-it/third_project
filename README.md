@@ -1,4 +1,5 @@
-# DM Airlines - MERN project
+
+# DM Airlines - MERN
 This MERN final project is about a programm 
 
 
@@ -8,7 +9,7 @@ This MERN final project is about a programm
 
 
 ## Description
-This is an app 
+This is a management app to organizing  
 ## Functionality
 Examples
 - Dark and light theme
@@ -59,9 +60,9 @@ Components:
 | `/`                          | HomePage             | public `<Route>`           | Home page.                                                |
 | `/user`              | ProfilePage          | user only `<PrivateRoute>` | User and player profile for the current user.             |
 | `/user/edit`         | EditProfilePage      | user only `<PrivateRoute>` | Edit user profile form.                                   |
-| `/tournaments/add`           | CreateTournamentPage | user only `<PrivateRoute>` | Create new tournament form.                               |
-| `/tournaments`               | TournamentListPage   | user only `<PrivateRoute>` | Tournaments list.                                         |
-| `/tournaments/:tournamentId` | TournamentDetailPage | user only `<PrivateRoute>` | Tournament details. Shows players list and other details. |
+| `/flight/add`           | CreateFlightPage | user only `<PrivateRoute>` | Create new flight form.                               |
+| `/flight`               | FlightListPage   | user only `<PrivateRoute>` | Flight list.                                         |
+| `/crew/` | CrewPage | user only `<PrivateRoute>` | Tournament details. Shows players list and other details. |
 | `/tournament/players/:id`    | PlayerDetailsPage    | user only `<PrivateRoute>` | Single player details.                                    |
 | `/rankings/:tournamentId`    | RankingsPage         | user only `<PrivateRoute>` | Tournament rankings list.                                 |
 
@@ -71,29 +72,106 @@ Components:
 
 ## Models
 
-User Models
+Crews Model
 ```
 {
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    birth: {type: Date},
+    email: { type: String, required: true, unique: true },
+    phone: { type: number },
+    language: { type:String },
+    Image: { type: String },
 }
 ```
-Crew model
+Aircraft Models
 ```
-{
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  profileImage: { type: String },
-}
+   model: {
+    type: String,
+    required: true
+  },
+  manufacturer: {
+    type: String,
+    required: true
+  },
+  registrationNumber: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  capacity: {
+    type: Number,
+    required: true
+  },
+  range: {
+    type: Number,
+    required: true
+  },
+  yearOfManufacture: {
+    type: Number,
+    required: true
+  },
+  status: {
+    type: String,
+    required: true,
+    enum: ['Active', 'Maintenance', 'Retired']
+  },
+  lastMaintenanceDate: {
+    type: Date
+  }
 ```
 
-User Models
+Flight Model
 ```
-{
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-}
+flightNumber: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  departureAirport: {
+    type: String,
+    required: true
+  },
+  arrivalAirport: {
+    type: String,
+    required: true
+  },
+  departureTime: {
+    type: Date,
+    required: true
+  },
+  arrivalTime: {
+    type: Date,
+    required: true
+  },
+  aircraft: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Aircraft',
+    required: true
+  },
+  crew: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Crew'
+  }],
+  airline: {
+    type: String,
+    required: true
+  },
+  status: {
+    type: String,
+    required: true,
+    enum: ['Scheduled', 'Delayed', 'Cancelled', 'Completed']
+  },
+  price: {
+    type: Number,
+    required: true
+  },
+  duration: {
+    type: Number,
+    required: true
+  }
 ```
+
 
 
 
@@ -126,7 +204,6 @@ Slides
 Daniel Rodrigues 
 
 Mariana Carvalho
-
 
 
 
