@@ -1,6 +1,6 @@
 
 # DM Airlines - MERN
-This MERN final project is about a programm 
+This MERN final project is about a program for airline crew scheduling
 
 
 ## Screenshots
@@ -9,13 +9,11 @@ This MERN final project is about a programm
 
 
 ## Description
-This is a management app to organizing  
+This is a management app for organizing  
 ## Functionality
 Examples
 - Dark and light theme
-- Preview em tempo real
-- Modo tela cheia
-- Multiplataforma
+
 
 
 ## Components
